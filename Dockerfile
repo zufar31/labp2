@@ -1,12 +1,16 @@
-# Python Base Image from https://hub.docker.com/r/arm32v7/python/
+# Use the arm32v7/python:3 base image
 FROM arm32v7/python:3
 
-# Copy the main.py and HAL folder to blink LED
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the Main1.py and hal folder into the container
 COPY Main1.py ./
 COPY hal ./hal
 
-# Intall the rpi.gpio python module
-RUN pip3 install --no-cache-dir rpi.gpio
+# Install required Python libraries: telepot, pyserial, and rpi.gpio
+RUN pip install --no-cache-dir telepot pyserial rpi.gpio
 
-# Trigger Python script
-CMD ["python3", "./Main1.py"]
+# Trigger the Python script (Main1.py) when the container starts
+CMD ["python", "./Main1.py"]
+
