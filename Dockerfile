@@ -1,9 +1,6 @@
 # Use the arm32v7/python:3 base image
 FROM arm32v7/python:3
 
-# Set the working directory inside the container
-WORKDIR /app
-
 # Copy the Main1.py and hal folder into the container
 COPY Main1.py ./
 COPY hal ./hal
